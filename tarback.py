@@ -4,21 +4,24 @@ How to use `find` and `tar` to back-up your friendly, neighborhood, disk-delta.
 '''
 import sys
 
-def tarback(zdays):
+def tarback(zdays, zpath):
     import os
+    import os.path
     import time
     from time import strftime
     from time import gmtime
     zdate = strftime("%Y-%m-%d", gmtime(time.time()))
-    zcmd = f'find /d_drive -type f -mtime -{zdays} | tar -cvf ~/Desktop/{zdate}_inc.tar -T - '
-    print('START:', zdate)
+    zfile = f'~/Desktop/{zdate}_inc.tar'
+    if not zpath or zdays < 1:
+        return False, zfile
+    zcmd = f'find {zpath} -type f -mtime -{zdays} | tar -cvf {zfile} -T -'
+    print('START:', zcmd)
     print('~*' * 10)
-    proc = os.popen(zcmd, 'r')
-    for ss, line in enumerate(proc, 1):
-        print(f'{ss}.)',line, end='')
-    print('~*' * 10)
-    print(zdate, f'{sys.argv[0]} DONE.', sep=': ')
-    print(f'   [{zcmd}]')
+    with os.popen(zcmd, 'r') as proc:
+        for ss, line in enumerate(proc, 1):
+            print(f'{ss}.)',line, end='')
+    print('EXIT', zcmd)
+    return True, zfile
 
 zdays = 7
 if len(sys.argv) == 2:
@@ -28,4 +31,9 @@ if len(sys.argv) == 2:
         print(f"Usage: {sys.argv[0]} number_of_days")
         
 print(f"Find: Backing-up the past {zdays} days.")
-tarback(zdays)
+response = tarback(zdays, '/d_drive')
+if response[0] is False:
+    print(f'Error: Unable to create {response[1]}')
+else:
+    print(f'Success: Archive saved to {response[1]} ...')
+print(*response)
