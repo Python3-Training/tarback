@@ -10,7 +10,7 @@ def tarback(zdays):
     from time import strftime
     from time import gmtime
     zdate = strftime("%Y-%m-%d", gmtime(time.time()))
-    zcmd = f'find /d_drive -type f -mtime -{zdays} || tar -cvf ~/Desktop/{zdate}_inc.tar -T - '
+    zcmd = f'find /d_drive -type f -mtime -{zdays} | tar -cvf ~/Desktop/{zdate}_inc.tar -T - '
     print('START:', zdate)
     print('~*' * 10)
     proc = os.popen(zcmd, 'r')
