@@ -1,5 +1,5 @@
-# tarback
-Mission: Quickly back-up our Linux workstations using date-named archives.
+# Tarback Mission?
+Quickly back-up our Linux workstations using date-named archives.
 
 Greetings 'pythoneers!
 
@@ -17,3 +17,8 @@ There is a reason why I post things on the holidays - I've lots more features to
 Happy July 4th!
 
 -- Rn
+
+## p.s:
+At the time of this retelling, Pythoneers should note that the `~/Desktop` location is *still* **not** a valid file-path!
+
+Once we get away from the `~/Desktop` however, we will be able to use `os.path.exists(...)` so as to verify that the archive was created.
