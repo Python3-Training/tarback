@@ -11,7 +11,7 @@ def tarback(zdays, zpath):
     from time import strftime
     from time import gmtime
     zdate = strftime("%Y-%m-%d", gmtime(time.time()))
-    zfile = f'~/Desktop/{zdate}_inc.tar'
+    zfile = f'~/Desktop/{zdate}_inc{zdays}.tar'
     if not zpath or zdays < 1:
         return False, zfile
     zcmd = f'find {zpath} -type f -mtime -{zdays} | tar -cvf {zfile} -T -'
