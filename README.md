@@ -19,9 +19,12 @@ Happy July 4th!
 
 -- Rn
 
-If you enjoy this type of DevOps enginnering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you might enjoy my [free training](https://www.udemy.com/course/python-1000/) opportunity, as well.
+If you enjoy this type of DevOps enginnering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you will enjoy my [free training opportunities](https://www.udemy.com/course/python-1000/), as well.
 
 ## p.s:
 At the time of this retelling, Pythoneers should note that the `~/Desktop` location is *still* **not** a valid path prefix!
 
 Once we get away from the `~/Desktop` however, we will be able to use `os.path.exists(...)` to verify that the archive was created.
+
+## Facebook:
+At the moment all things new + python are streamed together on my [python facebook page](https://www.facebook.com/groups/nagyspythontraining). Feel free to check-in there, to see what's up [here](https://github.com/soft9000), on [YouTube](https://www.youtube.com/watch?v=X3-s38YFQwM&fbclid=IwAR38MdN9lUvHz-kM-Vm_wSlnJjyE13NklI3PCXDRaTfFBv7ju6vn7DwVIaE), as well as [elsewhere](https://www.amazon.com/~/e/B08ZJLH1VN?fbclid=IwAR3FFMtBWNZxNtZY81Ex6YIHJSsY-62kcIWRH74IvasxWdONKGgphqrW-IE).
