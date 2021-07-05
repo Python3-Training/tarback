@@ -9,7 +9,11 @@ Designed to run wherever the `find` and `tar` commands are installed (Linux, Cyg
 
 There is a reason why I post things on the holidays - I've lots more features to add as time permits.
 
+# Next Mission?
+* Update the script to use YOUR directory base.
+* Change `~/Desktop` to an external device / networked location.
+* Add to `cron` so as to run automatically.
+
 Happy July 4th!
 
 -- Rn
-
