@@ -1,5 +1,5 @@
 # Tarback Mission?
-Quickly back-up our Linux workstations using date-named archives.
+**Quickly back-up our Linux workstations using date-named archives.**
 
 Greetings 'Pythoneers!
 
@@ -7,20 +7,21 @@ I wanted to share a handy little script that I created to help us back-up / arch
 
 Designed to run wherever the `find` and `tar` commands are installed (Linux, Cygwin, MacOS, etc,) I hope you will find this code usefull, as well as instructive. 
 
-There is a reason why I post things on the holidays - I've lots more features to add as time permits.
-
 # Next Mission?
 * Update the script to use YOUR directory base.
 * Change `~/Desktop` to an external device / networked location.
 * Add to `cron` so as to run automatically.
 
+There is a reason why I post things on the holidays - I've lots more features to add as time permits.
+
+
 Happy July 4th!
 
 -- Rn
 
-If you enjoy this type of project, then you should also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/).
+If you enjoy this type of DevOps enginnering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you might enjoy my [free training](https://www.udemy.com/course/python-1000/) opportunity, as well.
 
 ## p.s:
-At the time of this retelling, Pythoneers should note that the `~/Desktop` location is *still* **not** a valid file-path!
+At the time of this retelling, Pythoneers should note that the `~/Desktop` location is *still* **not** a valid path prefix!
 
-Once we get away from the `~/Desktop` however, we will be able to use `os.path.exists(...)` so as to verify that the archive was created.
+Once we get away from the `~/Desktop` however, we will be able to use `os.path.exists(...)` to verify that the archive was created.
