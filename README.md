@@ -18,7 +18,7 @@ Happy July 4th!
 
 -- Rn
 
-If you enjoy this type of project, then you maigh also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/).
+If you enjoy this type of project, then you should also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/).
 
 ## p.s:
 At the time of this retelling, Pythoneers should note that the `~/Desktop` location is *still* **not** a valid file-path!
