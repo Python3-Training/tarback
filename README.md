@@ -19,7 +19,7 @@ Happy July 4th!
 
 -- Rn
 
-If you enjoy this type of DevOps enginnering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you will enjoy my [primer training]([https://www.udemy.com/course/python-1000/](https://www.udemy.com/course/python-1000/?referralCode=D3A7B607149F46D12A28)), as well.
+If you enjoy this type of DevOps enginnering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you will enjoy my [primer training opportunity](https://www.udemy.com/course/python-1000/?referralCode=D3A7B607149F46D12A28), as well.
 
 ## p.s:
 At the time of this retelling, Pythoneers should note that the `~/Desktop` location is *still* **not** a valid path prefix!
