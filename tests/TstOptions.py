@@ -3,7 +3,9 @@
 Mission: Test our SELECTIVE save / restore of tarback2 Options.
 '''
 import sys
-sys.path.insert(0, '../tarback')
+sys.path.insert(0, '../tarback')    # vscode
+sys.path.insert(0, '../../tarback') # cli
+
 
 import os
 import os.path
