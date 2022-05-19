@@ -2,7 +2,7 @@
 '''
 How to use `find` and `tar` to back-up your friendly, neighborhood, disk-delta.
 2021/07/04: Created.
-2020/05/19: Updated to support hard-coded 'tagged' Options.locations. 
+2020/05/19: Updated to support hard-coded 'tagged' Options.locations. Also added the 'all' option.
 
 TODO: Support runtime `Options.locations` CRUD'ing.
 '''
