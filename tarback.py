@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''
 How to use `find` and `tar` to back-up your friendly, neighborhood, disk-delta.
+2021/07/04: Created.
 '''
 import sys
 
@@ -17,11 +18,13 @@ def tarback(zdays, zpath):
     zcmd = f'find {zpath} -type f -mtime -{zdays} | tar -cvf {zfile} -T -'
     print('START:', zcmd)
     print('~*' * 10)
+    bOk = False
     with os.popen(zcmd, 'r') as proc:
         for ss, line in enumerate(proc, 1):
+            bOk = True
             print(f'{ss}.)',line, end='')
     print('EXIT', zcmd)
-    return True, zfile
+    return bOk, zfile
 
 zdays = 7
 if len(sys.argv) == 2:
