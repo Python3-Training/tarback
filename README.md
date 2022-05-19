@@ -21,6 +21,13 @@ I've more features to add (`tarback3`?) as time permits...
 
 If you enjoy this type of DevOps engineering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you will enjoy my [primer training opportunity](https://www.udemy.com/course/python-1000/?referralCode=D3A7B607149F46D12A28), as well.
 
+## Options.DEFAULT_ALL
+Decades ago - when I was writing for BYTE Magazine - a fellow author mused that the reason WHY wee geeks have
+such cool tools is because we actually USE what we CREATE?
+
+In that spirit I hope you'll enjoy the new **DEFAULT_ALL** feature. Presently implemented as a 'key option' (yes, more puns :)
+we can use that token whenever we want to 'Jedi' ('JUST DO IT') `all.`
+
 ## Related Productions:
 If you would like to encourage these and other geeky efforts, then consider purchasing one of [my books on Amazon](https://www.amazon.com/~/e/B08ZJLH1VN?fbclid=IwAR33PujdptzBfukQQuwATJ05mxm--xSB31ApgdJyJeNFzPXvmgrFgI1coS4) and / or one of [my other educational videos](https://www.udemy.com/user/randallnagy2/).
 
