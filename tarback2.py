@@ -33,16 +33,23 @@ class Options:
     
     @staticmethod 
     def Load(file=DEFAULT_OPTIONS):
+        result = Options()
         if not file or not os.path.exists(file):
-            return Options()
+            return result
         with open(file) as fh:
-            return eval(fh.read())
+            adict =  eval(fh.read())
+            for key in adict:
+                if key == 'days':
+                    result.days = adict[key]
+                else:
+                    result.locations[key] = adict[key]
+        return result
 
     def save(self, file=DEFAULT_OPTIONS):
         if not file:
             return False
         with open(file, 'w') as fh:
-            fh.write(self.__dict__)
+            fh.write(repr(self.__dict__))
         return True
 
 
