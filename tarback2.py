@@ -88,7 +88,7 @@ if __name__ == '__main__':
             if results.key == Options.DEFAULT_ALL:
                 print('... backing it all up ...!')
             elif results.key not in options.locations:
-                raise Exception(f"Error: '{results.key}' not in [{options.keys}]")
+                raise Exception(f"Error: '{results.key}' not a key in {options.locations} ...")
             option = results.key
 
         except Exception as ex:
