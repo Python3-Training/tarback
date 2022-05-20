@@ -68,7 +68,12 @@ def tarback(options):
         return False, None
     if options.option == Options.DEFAULT_ALL:
         for key in options.locations:
-            tarback(options, key)
+            if key == Options.DEFAULT_ALL:
+                continue # Safe coding means 'no accidents'?
+            else:
+                options.option = key
+                tarback(options)
+        options.option = Options.DEFAULT_ALL
         return True, Options.DEFAULT_ALL
     if not options.option in options.locations:
         return False, None
