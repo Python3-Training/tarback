@@ -10,8 +10,9 @@ Designed to run wherever the `find` and `tar` commands are installed (Linux, Cyg
 I've kept `tarback.py` for educational reasons - it works fine, but the latest version is `tarback2.py`. 
 
 # MISSION: Customize tarback2.py before using!
-* Add YOUR key folders (pun intended) to **Options**.locations.
-* Change **Options**.DEFAULT_FOLDER to YOUR backup location.
+* Add YOUR key folders (pun intended) to **Options**.`locations`.
+* Define your default key in **Options**.`option`.
+* Change **Options**.`DEFAULT_FOLDER` to YOUR backup location.
 * (optional) Add to `cron` so as to run automatically?
 
 I've more features to add (`tarback3`?) as time permits... 
