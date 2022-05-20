@@ -27,6 +27,9 @@ case01b = tarback2.Options.Load(TC_FILE01)
 if case01b.option == case01.option:
     raise("Error: Default option should NOT be persisted.")
 
+if len(case01.locations) != len(case01b.locations):
+    raise("Error: Locations not completely saved / restored.")
+
 for key in case01.locations:
     if key not in case01b.locations:
         raise Exception("Error: Load / Save Error.")

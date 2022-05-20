@@ -59,7 +59,9 @@ class Options:
         if not file:
             return False
         with open(file, 'w') as fh:
-            fh.write(repr(self.__dict__))
+            adict = dict(self.locations)
+            adict['days'] = self.days
+            fh.write(repr(adict))
         return True
 
 
