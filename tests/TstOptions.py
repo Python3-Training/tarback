@@ -19,9 +19,13 @@ import tarback2
 
 case01 = tarback2.Options()
 case01.days = 123
+case01.option = 'unsaved'
 
 case01.save(TC_FILE01)
 case01b = tarback2.Options.Load(TC_FILE01)
+
+if case01b.option == case01.option:
+    raise("Error: Default option should NOT be persisted.")
 
 for key in case01.locations:
     if key not in case01b.locations:
