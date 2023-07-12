@@ -1,9 +1,13 @@
 # Tarback Mission?
 **Quickly back-up our Linux workstations using date-named archives.**
 
+![Logo](./_images/tarback.jpg)
+
 Greetings 'Pythoneers!
 
-I wanted to share a handy little script that I created to help us back-up / archive our files. The ability to tally, archive, as well as to save recently-changed files into incrementally-named backups on our desktop, are the key benefits.
+I wanted to share a handy little script that I created to help us back-up / archive our files. The ability to tally, archive, as well as to save recently-changed files into incrementally-named backups on our desktop, are the key benefits. 
+
+Using your platform's ***native file recovery*** format is also seldom a bad idea! ;-)
 
 Designed to run wherever the `find` and `tar` commands are installed (Linux, Cygwin, MacOS, etc,) I hope you will find this code useful, as well as instructive. 
 
