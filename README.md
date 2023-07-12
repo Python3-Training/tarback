@@ -1,7 +1,7 @@
 # Tarback Mission?
 **Quickly back-up our Linux workstations using date-named archives.**
 
-![Logo](https://github.com/Python3-Training/tarback/tree/main/_images/tarback.jpg)
+![Logo](./_images/tarback.jpg)
 
 Greetings 'Pythoneers!
 
