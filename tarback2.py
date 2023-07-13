@@ -106,8 +106,19 @@ if __name__ == '__main__':
             parser = argparse.ArgumentParser()
             parser.add_argument('--days', help='number of archive days', type=int, default=options.days)
             parser.add_argument('--key', help='location alias', default=options.option, required=False)
+            parser.add_argument('--info', help='show configuration', action='store_true', required=False)
             results = parser.parse_args()
             options.days = results.days
+            if results.info:
+                print(f'{sys.argv[0]} Configuration:\n')
+                print(f'Default days: {options.days}')
+                print(f'Storage root: {options.root}')
+                print("\nKey locations include:")
+                for able in options.locations:
+                    print(f'\t{able} = {options.locations[able]}')
+                print(f"\t{Options.DEFAULT_ALL} = BACKUP ALL OF THE ABOVE")
+                print(f"\nEdit {Options.DEFAULT_OPTIONS} to update.")
+                exit()
             if results.key == Options.DEFAULT_ALL:
                 print('... backing it all up ...!')
             elif results.key not in options.locations:
