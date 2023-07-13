@@ -176,7 +176,6 @@ if __name__ == '__main__':
             elif results.key not in options.locations:
                 raise Exception(f"Error: '{results.key}' not a key in {options.locations} ...")
             if results.gap:
-                znow = datetime.date.today()
                 zthen = detect_gap(options, results.key)
                 if zthen:
                     zdate = datetime.date.today() - zthen
