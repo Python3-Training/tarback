@@ -19,6 +19,8 @@ I've kept `tarback.py` for educational reasons - it works fine, but the latest v
 * Change **Options**.`DEFAULT_FOLDER` to YOUR backup location.
 * (optional) Add to `cron` so as to run automatically?
 
+Since 2023/07/13 dynamic option [re]configuration, online backup reporting, as well as an oh-so-cool backup 'gap-days' set of 'ops are also presently possible. Use `tarback2.py --help` to check-out the new options.
+
 I've more features to add (`tarback3`?) as time permits... 
 
 
