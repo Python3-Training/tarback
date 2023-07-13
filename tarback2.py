@@ -25,13 +25,14 @@ from time import gmtime
 
 class Options:
     DEFAULT_ALL = 'all'
-    DEFAULT_OPTIONS = './tarback.options'
+    DEFAULT_OPTIONS_NAME = '/tarback.options'
+    DEFAULT_OPTIONS = '.' + DEFAULT_OPTIONS_NAME
     DEFAULT_FOLDER  = '/mnt/c/tmp' # Where I keep MY incrementals
 
     def __init__(self):
         self.days = 7
         self.overlap = 2 # days to add to gap-days
-        self.option = 'd_drive' # a 'no-saver'
+        self.option = 'd_drive'
         self.root = Options.DEFAULT_FOLDER
         self.locations = { # A good-many devices!
             'd_drive':'/mnt/c/d_drive',
@@ -42,28 +43,116 @@ class Options:
             'd_archive_static':'/mnt/e/d_archive_static',
             'd_archive_media':'/mnt/e/d_archive_media',
             }
-    
+
+    def show_locations(self):
+        for ss, akey in enumerate(self.locations,1):
+            print(f'{ss:>03}.) {akey} = {self.locations[akey]}')
+
+    @staticmethod 
+    def Setup(file=DEFAULT_OPTIONS):
+        ''' Set-up the reloadable options. '''
+        znew = Options()
+        cont = True
+        print('Step 01: Enter backup locations')
+        znew.locations.clear()
+        while cont:
+            zloc = input("Location: ")
+            if not zloc:
+                continue
+            if zloc in znew.locations.values():
+                print("Duplicate location ignored.")
+                continue
+            if not os.path.isdir(zloc):
+                print(f"Unable to locate directory {zloc}")
+                continue
+            zkey = input('Enter location alias (key): ')
+            if not zkey:
+                continue
+            zkey = zkey.replace(' ', '_')
+            zkey = zkey.replace('\t', '_')
+            xx = 0
+            if zkey in znew.locations:
+                zkey2 = zkey
+                while zkey2 in znew.locations:
+                    xx += 1
+                    zkey2 = zkey + str(xx)
+                print(f"Key '{zkey}' already used. Renamed to {zkey2}.")
+                zkey = zkey2
+            znew.locations[zkey] = zloc
+            znew.show_locations()
+            zyn = input('Done? ').lower()
+            if zyn == 'y':
+                cont = False
+
+        print("Step 02: Select the default backup key.")
+        for ss, zkey in enumerate(znew.locations,1):
+            print(f'{ss}.) {zkey}')
+        ZALL = ss+1
+        print(f'{ZALL}.) ALL')
+        znew.option = Options.DEFAULT_ALL
+        znum = input(f"Enter default backup key-number: (1-{ZALL}) ")
+        try:
+            znum = int(znum)
+            if znum != ZALL:
+                znew.option = list(znew.locations)[znum - 1]
+        except:
+            pass
+
+        print("Step 03: Select existing folder for default archive location.")
+        while True:
+            zloc = input('Default archive storage folder: ')
+            if zloc and os.path.isdir(zloc):
+                if zloc in znew.locations.values():
+                    print("WARNING: Archive output is also a backup path.")
+                    zyn = input("Would you like to change that? [y/N] ").lower()
+                    if zyn == 'y':
+                        continue
+                znew.root = zloc
+                break
+            else:
+                print('Invalid location. Ignored.')
+        
+        print("Step 04: Default days to backup.")
+        znum = input("Enter number of days to include: ")
+        try:
+            znum = int(znum)
+            znew.days = znum
+        except:
+            print(f'Invalid number. Using {znew.days} days.')
+        while True:
+            do_report(znew)
+            zyn = input("Correct? [y/N] ").lower()
+            if zyn == 'y':
+                if znew.save():
+                    print(f'Options saved to {Options.DEFAULT_OPTIONS}')
+                    return znew
+                else:
+                    print(f'Unable to save options to {Options.DEFAULT_OPTIONS}!')
+            elif zyn == 'n':
+                break
+            print("Please enter 'y' or 'n' ...")
+            
+
     @staticmethod 
     def Load(file=DEFAULT_OPTIONS):
         result = Options()
-        if not file or not os.path.exists(file):
+        if not file:
+            return result
+        if not os.path.exists(file):
             return result
         with open(file) as fh:
+            result.locations.clear()
+            print("Reading stored options ...")
             adict =  eval(fh.read())
             for key in adict:
-                if key == 'days':
-                    result.days = adict[key]
-                else:
-                    result.locations[key] = adict[key]
+                result.__dict__[key] = adict[key]
         return result
 
     def save(self, file=DEFAULT_OPTIONS):
         if not file:
             return False
         with open(file, 'w') as fh:
-            adict = dict(self.locations)
-            adict['days'] = self.days
-            fh.write(repr(adict))
+            fh.write(str(self.__dict__))
         return True
 
 
@@ -122,7 +211,9 @@ def do_report(options):
     print(f'Default: {options.option}')
     print(f"\nEdit {Options.DEFAULT_OPTIONS} to update.")
 
+
 def tarback(options):
+    ''' The actual archival process. '''
     if not isinstance(options, Options):
         return False, None
     if options.option == Options.DEFAULT_ALL:
@@ -161,6 +252,8 @@ if __name__ == '__main__':
         try:
             import argparse
             parser = argparse.ArgumentParser()
+            parser.add_argument('--default', help='use hard-coded configuration', action='store_true', required=False)
+            parser.add_argument('--config', help='custome configure', action='store_true', required=False)
             parser.add_argument('--days', help='number of archive days', type=int, default=options.days)
             parser.add_argument('--key', help='location alias', default=options.option, required=False)
             parser.add_argument('--info', help='show configuration', action='store_true', required=False)
@@ -168,6 +261,15 @@ if __name__ == '__main__':
             results = parser.parse_args()
             options.days = results.days
             options.option = results.key
+            if results.default:
+                print("Reloading default configuration.")
+                options = Options()
+                options.save()
+                print("Default configuration saved.")
+                exit()
+            if results.config:
+                Options.Setup()
+                exit()
             if results.info:
                 do_report(options)
                 exit()
