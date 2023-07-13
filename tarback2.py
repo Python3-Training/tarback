@@ -245,6 +245,10 @@ def tarback(options):
 
 
 if __name__ == '__main__':
+    if not os.name == 'posix':
+        import platform
+        print(f"The '{platform.system()}' operating system is not presently supported.")
+        exit()
     options = Options.Load()
     if Options.DEFAULT_ALL in options.locations:
         raise Exception(f"Error: Reserved dictionary location '{Options.DEFAULT_ALL}'")
