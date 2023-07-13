@@ -19,6 +19,7 @@ import os
 import os.path
 import sys
 import time
+import datetime
 from time import strftime
 from time import gmtime
 
@@ -29,6 +30,7 @@ class Options:
 
     def __init__(self):
         self.days = 7
+        self.overlap = 2 # days to add to gap-days
         self.option = 'd_drive' # a 'no-saver'
         self.root = Options.DEFAULT_FOLDER
         self.locations = { # A good-many devices!
@@ -64,6 +66,61 @@ class Options:
             fh.write(repr(adict))
         return True
 
+
+def recent_archive_for(zroot, zkey):
+    ''' Detect the last archive date for the archive key in the archive root. '''
+    delta = False
+    zmin = datetime.date(1971,1,2)
+    for node in os.listdir(zroot):
+        if node.startswith(zkey):
+            zdate = node[len(zkey)+1:].split('_')[0]
+            zsamp = datetime.date.fromisoformat(zdate)
+            if zsamp >= zmin:
+                zmin = zsamp
+                delta = True
+    if not delta:
+        return None # it pays to be specific?
+    return zmin
+
+
+def detect_gap(zopts, zkey):
+    ''' Detect the earliest archive date in the archive root. '''
+    delta = False
+    zmin = datetime.date.today()
+    if isinstance(zopts, Options):
+        if zkey == zopts.DEFAULT_ALL:
+            for zloc in zopts.locations:
+                ztime = recent_archive_for(zopts.root, zloc)
+                if ztime and ztime <= zmin:
+                    zmin = ztime
+                    delta = True
+        else:
+            ztime = recent_archive_for(zopts.root, zkey)
+            if ztime and ztime <= zmin:
+                zmin = ztime
+                delta = True
+    if not delta:
+        return None
+    return zmin
+
+
+def do_report(options):
+    ''' Show the state of the archival effort. '''
+    print(f'{sys.argv[0]} Configuration:\n')
+    print(f'Default days: {options.days}')
+    print(f'Storage root: {options.root}')
+    print("\nKeyed locations include:")
+    for able in options.locations:
+        print(f'\t{able} = {options.locations[able]}')
+        zlast = detect_gap(options, able)
+        if zlast:
+            zgap = datetime.date.today() - zlast
+            print(f'\t\t\tLast archived on {zlast}, {zgap.days} days ago...')
+        else:
+            print(f'\t\t\tPrior archive not found...')
+    print(f"\t{Options.DEFAULT_ALL} = BACKUP ALL OF THE ABOVE")
+    print(f'Default: {options.option}')
+    print(f"\nEdit {Options.DEFAULT_OPTIONS} to update.")
 
 def tarback(options):
     if not isinstance(options, Options):
@@ -107,24 +164,23 @@ if __name__ == '__main__':
             parser.add_argument('--days', help='number of archive days', type=int, default=options.days)
             parser.add_argument('--key', help='location alias', default=options.option, required=False)
             parser.add_argument('--info', help='show configuration', action='store_true', required=False)
+            parser.add_argument('--gap', help='attempt days-since detection', action='store_true', required=False)
             results = parser.parse_args()
             options.days = results.days
+            options.option = results.key
             if results.info:
-                print(f'{sys.argv[0]} Configuration:\n')
-                print(f'Default days: {options.days}')
-                print(f'Storage root: {options.root}')
-                print("\nKey locations include:")
-                for able in options.locations:
-                    print(f'\t{able} = {options.locations[able]}')
-                print(f"\t{Options.DEFAULT_ALL} = BACKUP ALL OF THE ABOVE")
-                print(f"\nEdit {Options.DEFAULT_OPTIONS} to update.")
+                do_report(options)
                 exit()
             if results.key == Options.DEFAULT_ALL:
                 print('... backing it all up ...!')
             elif results.key not in options.locations:
                 raise Exception(f"Error: '{results.key}' not a key in {options.locations} ...")
-            options.option = results.key
-
+            if results.gap:
+                znow = datetime.date.today()
+                zthen = detect_gap(options, results.key)
+                if zthen:
+                    zdate = datetime.date.today() - zthen
+                    options.days = zdate.days + options.overlap
         except Exception as ex:
             raise ex
             
@@ -133,5 +189,6 @@ if __name__ == '__main__':
     if response[0] is False:
         print(f'Error: Unable to create {response[1]}')
     else:
-        print(f'Success: Archive saved to {response[1]} ...')
+        print(f"\nBacked-up '{options.option}' for the past {options.days} days!")
+        print(f'\nSuccess: Archive saved to {response[1]} ...')
     print(*response)
