@@ -4,16 +4,17 @@ Mission: Quickly back-up Linux workstations using range-named archives.
 =======
 How to use `find` and `tar` to back-up your friendly, neighborhood, disk-delta.
 2020/05/19: Updated to support hard-coded 'tagged' Options.locations. Also added the 'all' option.
-2023/07/13: Added reporting, as well as 'day-gaps' to automatically backup ANY --key since it's last detected archival.
+2023/07/13: Added re-configuration, configuration, and online archive-status reporting. 
+            Added 'day-gaps' to automatically backup ANY --key since by checking online archival(s.)
 
-~~~ How To Re-Use ~~~
+~~~ Configure Defaults [now preferred] ~~~
+(0) Use --config to create a custom congifuration file. Hardcoding (below) is now optional.
+~~~ Hardcoded Defaults [now optional] ~~~
 (1) Replace Options.locations with YOUR key & path location(s)
 (2) Update Options.option with YOUR default key to use
 (3) Change Options.DEFAULT_FOLDER to where you want to save your incremental backups
-(=) Default invocation will run your default `option`` for the default `days`
-(=) May also specify other `{days}` and / or `{option}` from the CLI
-
-TODO: Support runtime `Options.locations` CRUD'ing.
+(4) Use --default to save your hardcode as the default configuration file (optional)
+(5) Use --config to create a custom congifuration file (--default to override)
 '''
 import os
 import os.path
@@ -257,7 +258,7 @@ if __name__ == '__main__':
             import argparse
             parser = argparse.ArgumentParser()
             parser.add_argument('--default', help='use hard-coded configuration', action='store_true', required=False)
-            parser.add_argument('--config', help='custome configure', action='store_true', required=False)
+            parser.add_argument('--config', help='custom configure', action='store_true', required=False)
             parser.add_argument('--days', help='number of archive days', type=int, default=options.days)
             parser.add_argument('--key', help='location alias', default=options.option, required=False)
             parser.add_argument('--info', help='show configuration', action='store_true', required=False)
