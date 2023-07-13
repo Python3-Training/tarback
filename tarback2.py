@@ -3,8 +3,8 @@
 Mission: Quickly back-up Linux workstations using range-named archives.
 =======
 How to use `find` and `tar` to back-up your friendly, neighborhood, disk-delta.
-2021/07/04: Created.
 2020/05/19: Updated to support hard-coded 'tagged' Options.locations. Also added the 'all' option.
+2023/07/13: Added reporting, as well as 'day-gaps' to automatically backup ANY --key since it's last detected archival.
 
 ~~~ How To Re-Use ~~~
 (1) Replace Options.locations with YOUR key & path location(s)
