@@ -26,7 +26,7 @@ I've more features to add (`tarback3`?) as time permits...
 
 -- Rn
 
-If you enjoy this type of DevOps engineering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you will enjoy my [primer training opportunity](https://www.udemy.com/course/python-1000/?referralCode=D3A7B607149F46D12A28), as well.
+If you enjoy this type of DevOps engineering, then you will also enjoy my [Python 4000 educational opportunity](https://www.udemy.com/course/python-4000-gnu-devops/). If you are new to Python 3, then you will enjoy my [primer training opportunity](https://www.udemy.com/course/python-1000-the-python-primer/?referralCode=A22C48BD99DBF167A3DE), as well.
 
 ## Options.DEFAULT_ALL
 Decades ago - when I was writing for BYTE Magazine - a fellow author mused that the reason WHY wee geeks have
