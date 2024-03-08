@@ -9,9 +9,9 @@ I wanted to share a handy little script that I created to help us back-up / arch
 
 Using your platform's ***native file recovery*** format is also seldom a bad idea! ;-)
 
-Designed to run wherever the `find` and `tar` commands are installed (Linux, Cygwin, MacOS, etc,) I hope you will find this code useful, as well as instructive. 
+Designed to run wherever the `find` and `tar` commands are installed (Linux, Cygwin, MacOS, etc,) I hope you will find this code useful, as well as instructive. --I've even a [3D print](https://www.thingiverse.com/thing:4931272) for TF cards on keychains.
 
-I've kept `tarback.py` for educational reasons - it works fine, but the latest version is `tarback2.py`. 
+p.s. I've kept `tarback.py` for educational reasons - it works fine, but the latest version is `tarback2.py`. 
 
 # MISSION: Customize tarback2.py before using!
 * Add YOUR key folders (pun intended) to **Options**.`locations`.
@@ -40,7 +40,7 @@ If you would like to encourage these and other geeky efforts, then consider purc
 
 
 ## Facebook:
-At the moment all things new + python are streamed together on my [python facebook page](https://www.facebook.com/groups/nagyspythontraining). Feel free to check-in there, to see what's up [here](https://github.com/soft9000), on [YouTube](https://www.youtube.com/watch?v=X3-s38YFQwM&fbclid=IwAR38MdN9lUvHz-kM-Vm_wSlnJjyE13NklI3PCXDRaTfFBv7ju6vn7DwVIaE), as well as [elsewhere](https://www.amazon.com/~/e/B08ZJLH1VN?fbclid=IwAR3FFMtBWNZxNtZY81Ex6YIHJSsY-62kcIWRH74IvasxWdONKGgphqrW-IE).
+At the moment all things new + python are streamed together on my [python facebook page](https://www.facebook.com/groups/nagyspythontraining). Feel free to check-in there, to see what's up [here](https://github.com/soft9000), as well as [elsewhere](https://soft9000.com).
 
 ## Keychain Backup
 
