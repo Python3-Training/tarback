@@ -39,8 +39,8 @@ we can use that token whenever we want to 'Jedi' ('JUST DO IT') `all.`
 If you would like to encourage these and other geeky efforts, then consider purchasing one of [my books on Amazon](https://www.amazon.com/~/e/B08ZJLH1VN?fbclid=IwAR33PujdptzBfukQQuwATJ05mxm--xSB31ApgdJyJeNFzPXvmgrFgI1coS4) and / or one of [my other educational videos](https://www.udemy.com/user/randallnagy2/).
 
 
-## Facebook:
-At the moment all things new + python are streamed together on my [python facebook page](https://www.facebook.com/groups/nagyspythontraining). Feel free to check-in there, to see what's up [here](https://github.com/soft9000), as well as [elsewhere](https://soft9000.com).
+## Protfolio:
+Feel free to see what's up [here](https://github.com/soft9000), as well as [elsewhere](https://soft9000.com).
 
 ## Keychain Backup
 
