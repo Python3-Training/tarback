@@ -9,7 +9,7 @@ I wanted to share a handy little script that I created to help us back-up / arch
 
 Using your platform's ***native file recovery*** format is also seldom a bad idea! ;-)
 
-Designed to run wherever the `find` and `tar` commands are installed (Linux, Cygwin, MacOS, etc,) I hope you will find this code useful, as well as instructive. --I've even a [3D print](https://www.thingiverse.com/thing:4931272) for TF cards on keychains.
+Designed to run wherever the `find` and `tar` commands are installed (Linux, Cygwin, WSL, macOS, etc,) I hope you will find this code useful, as well as instructive. --I've even a [3D print](https://www.thingiverse.com/thing:4931272) for TF cards on keychains.
 
 p.s. I've kept `tarback.py` for educational reasons - it works fine, but the latest version is `tarback2.py`. 
 
